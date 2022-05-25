@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
 
     @GetMapping
-    public String greeting() {
+    public String index() {
         return "Welcome to Lexxkit's projects. Click to check <a href='/calculator'>Calculator</a> App.";
     }
 }
