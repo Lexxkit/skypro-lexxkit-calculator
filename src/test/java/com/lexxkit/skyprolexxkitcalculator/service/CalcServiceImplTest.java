@@ -3,6 +3,7 @@ package com.lexxkit.skyprolexxkitcalculator.service;
 import com.lexxkit.skyprolexxkitcalculator.exception.DivisionByZeroException;
 import org.junit.jupiter.api.Test;
 
+import static com.lexxkit.skyprolexxkitcalculator.service.CalcServiceTestConstants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -11,89 +12,62 @@ class CalcServiceImplTest {
 
     @Test
     void shouldReturnTwoWhenUseAdditionOfOneAndOne() {
-        int num1 = 1;
-        int num2 = 1;
-        int expected = out.addition(num1, num2);
-        int actual = 2;
+        int result = out.addition(ONE, ONE);
 
-        assertEquals(expected, actual);
+        assertEquals(ONE + ONE, result);
     }
 
     @Test
     void shouldReturnZeroWhenUseAdditionOfOneAndMinusOne() {
-        int num1 = 1;
-        int num2 = -1;
-        int expected = out.addition(num1, num2);
-        int actual = 0;
+        int result = out.addition(ONE, NEGATIVE_ONE);
 
-        assertEquals(expected, actual);
+        assertEquals(ONE + NEGATIVE_ONE, result);
     }
 
     @Test
     void shouldReturnZeroWhenUseSubtractionOfOneAndOne() {
-        int num1 = 1;
-        int num2 = 1;
-        int expected = out.subtraction(num1, num2);
-        int actual = 0;
+        int result = out.subtraction(ONE, ONE);
 
-        assertEquals(expected, actual);
+        assertEquals(ONE - ONE, result);
     }
 
     @Test
     void shouldReturnTwoWhenUseSubtractionOfOneAndMinusOne() {
-        int num1 = 1;
-        int num2 = -1;
-        int expected = out.subtraction(num1, num2);
-        int actual = 2;
+        int result = out.subtraction(ONE, NEGATIVE_ONE);
 
-        assertEquals(expected, actual);
+        assertEquals(ONE - NEGATIVE_ONE, result);
     }
 
     @Test
     void shouldReturnOneWhenUseMultiplicationOfOneAndOne() {
-        int num1 = 1;
-        int num2 = 1;
-        int expected = out.multiplication(num1, num2);
-        int actual = 1;
+        int result = out.multiplication(ONE, ONE);
 
-        assertEquals(expected, actual);
+        assertEquals(ONE * ONE, result);
     }
 
     @Test
     void shouldReturnMinusOneWhenUseMultiplicationOfOneAndMinusOne() {
-        int num1 = 1;
-        int num2 = -1;
-        int expected = out.multiplication(num1, num2);
-        int actual = -1;
+        int result = out.multiplication(ONE, NEGATIVE_ONE);
 
-        assertEquals(expected, actual);
+        assertEquals(ONE * NEGATIVE_ONE, result);
     }
 
     @Test
     void shouldReturnOneWhenUseDivisionOfOneAndOne() {
-        int num1 = 1;
-        int num2 = 1;
-        int expected = out.division(num1, num2);
-        int actual = 1;
+        int result = out.division(ONE, ONE);
 
-        assertEquals(expected, actual);
+        assertEquals(ONE / ONE, result);
     }
 
     @Test
     void shouldReturnMinusOneWhenUseDivisionOfOneAndMinusOne() {
-        int num1 = 1;
-        int num2 = -1;
-        int expected = out.division(num1, num2);
-        int actual = -1;
+        int result = out.division(ONE, NEGATIVE_ONE);
 
-        assertEquals(expected, actual);
+        assertEquals(ONE / NEGATIVE_ONE, result);
     }
 
     @Test
     void shouldThrowDivisionByZeroExceptionWhenUseDivisionByZero() {
-        int num1 = 1;
-        int num2 = 0;
-
-        assertThrows(DivisionByZeroException.class, () -> out.division(num1, num2));
+        assertThrows(DivisionByZeroException.class, () -> out.division(ONE, ZERO));
     }
 }

@@ -6,6 +6,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
+import static com.lexxkit.skyprolexxkitcalculator.service.CalcServiceTestConstants.NEGATIVE_ONE;
+import static com.lexxkit.skyprolexxkitcalculator.service.CalcServiceTestConstants.ONE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalcServiceImplParametrizedTest {
@@ -14,58 +16,37 @@ class CalcServiceImplParametrizedTest {
 
 
     @ParameterizedTest
-    @MethodSource("provideParamsForAddition")
-    void shouldGenerateCorrectAnswerWhenUseAddition(int num1, int num2, int expectedAnswer) {
+    @MethodSource("provideParamsForCalcService")
+    void shouldGenerateCorrectAnswerWhenUseAddition(int num1, int num2) {
         int result = out.addition(num1, num2);
-        assertEquals(expectedAnswer, result);
+        assertEquals(num1 + num2, result);
     }
 
     @ParameterizedTest
-    @MethodSource("provideParamsForSubtraction")
-    void shouldGenerateCorrectAnswerWhenUseSubtraction(int num1, int num2, int expectedAnswer) {
+    @MethodSource("provideParamsForCalcService")
+    void shouldGenerateCorrectAnswerWhenUseSubtraction(int num1, int num2) {
         int result = out.subtraction(num1, num2);
-        assertEquals(expectedAnswer, result);
+        assertEquals(num1 - num2, result);
     }
 
     @ParameterizedTest
-    @MethodSource("provideParamsForMultiplication")
-    void shouldGenerateCorrectAnswerWhenUseMultiplication(int num1, int num2, int expectedAnswer) {
+    @MethodSource("provideParamsForCalcService")
+    void shouldGenerateCorrectAnswerWhenUseMultiplication(int num1, int num2) {
         int result = out.multiplication(num1, num2);
-        assertEquals(expectedAnswer, result);
+        assertEquals(num1 * num2, result);
     }
 
     @ParameterizedTest
-    @MethodSource("provideParamsForDivision")
-    void shouldGenerateCorrectAnswerWhenUseDivision(int num1, int num2, int expectedAnswer) {
+    @MethodSource("provideParamsForCalcService")
+    void shouldGenerateCorrectAnswerWhenUseDivision(int num1, int num2) {
         int result = out.division(num1, num2);
-        assertEquals(expectedAnswer, result);
+        assertEquals(num1 / num2, result);
     }
 
-    public static Stream<Arguments> provideParamsForAddition() {
+    public static Stream<Arguments> provideParamsForCalcService() {
         return Stream.of(
-                Arguments.of(1, 1, 2),
-                Arguments.of(1, -1, 0)
-        );
-    }
-
-    public static Stream<Arguments> provideParamsForSubtraction() {
-        return Stream.of(
-                Arguments.of(1, 1, 0),
-                Arguments.of(1, -1, 2)
-        );
-    }
-
-    public static Stream<Arguments> provideParamsForMultiplication() {
-        return Stream.of(
-                Arguments.of(1, 1, 1),
-                Arguments.of(10, -1, -10)
-        );
-    }
-
-    public static Stream<Arguments> provideParamsForDivision() {
-        return Stream.of(
-                Arguments.of(1, 1, 1),
-                Arguments.of(10, -2, -5)
+                Arguments.of(ONE, ONE),
+                Arguments.of(ONE, NEGATIVE_ONE)
         );
     }
 }
